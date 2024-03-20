@@ -8,3 +8,8 @@ const sum = (numberOne, numberTwo) => {
   }
 };
 console.log(sum(20, 40));
+
+/*/ const sum = (numberOne, numberTwo) => {
+  return Math.max(numberOne, numberTwo);
+};
+console.log(sum(2, 6));*/

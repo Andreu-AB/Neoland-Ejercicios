@@ -4,6 +4,18 @@
 
 const numbers = [1, 2, 3, 5, 45, 37, 58];
 
-function sumAll(param) {
-  //
+function sumAll(numbers) {
+  let total = 0;
+
+  for (i = 0; i < numbers.length; i++) {
+    // console.log("i: ", i);
+    // console.log("numselect: ", numbers[i]);
+    // console.log("total abans de sumar: ", total);
+
+    total = total + numbers[i];
+    // console.log("total despres de cada suma: ", total);
+  }
+
+  return total;
 }
+console.log(sumAll(numbers));

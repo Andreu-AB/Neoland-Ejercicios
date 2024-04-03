@@ -1,0 +1,5 @@
+/* Edita el fichero index.html para aplicarle la clase .small a los dos párrafos usando el atributo correspondiente */
+
+.small {
+  font-size: 9px;
+}

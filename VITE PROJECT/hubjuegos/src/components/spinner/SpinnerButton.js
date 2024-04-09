@@ -1,4 +1,3 @@
-//SpinnerButton.js-----> src/components/spinner/SpinnerButton.js
 import "./SpinnerButton.css";
 const template = () =>
   `<div class="containerSpinnerButton">

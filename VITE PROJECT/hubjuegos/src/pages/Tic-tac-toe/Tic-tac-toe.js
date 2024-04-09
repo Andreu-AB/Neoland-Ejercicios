@@ -3,8 +3,9 @@ import {
   PrintMainGrid,
   PrintButtonPlayAgain,
 } from "../../components";
+import "./Tic-tac-toe.css";
 const template = () => `
-<div>
+<div id="ticTacToeContainer">
     <div id='playerTurnContainer'></div>
     <div id='mainGridContainer'></div>
     <div id='buttonPlayAgainContainer'></div>
@@ -15,6 +16,6 @@ const template = () => `
 export const PrintTicTacToePage = () => {
   document.querySelector("main").innerHTML = template();
   PrintPlayerTurn();
-  PrintMainGrid();
   PrintButtonPlayAgain();
+  PrintMainGrid();
 };

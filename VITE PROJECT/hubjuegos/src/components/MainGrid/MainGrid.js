@@ -2,47 +2,49 @@ import "./MainGrid.css";
 export const PrintMainGrid = () => {
   const mainGrid = `
         <div class="main-grid">
-          <div class="box align">0</div>
-          <div class="box align">1</div>
-          <div class="box align">2</div>
-          <div class="box align">3</div>
-          <div class="box align">4</div>
-          <div class="box align">5</div>
-          <div class="box align">6</div>
-          <div class="box align">7</div>
-          <div class="box align">8</div>
+          <div class="box align"></div>
+          <div class="box align"></div>
+          <div class="box align"></div>
+          <div class="box align"></div>
+          <div class="box align"></div>
+          <div class="box align"></div>
+          <div class="box align"></div>
+          <div class="box align"></div>
+          <div class="box align"></div>
         </div>
-    <h2 id="results">X Win</h2>
-
     `;
   const containerMainGrid = document.getElementById("mainGridContainer");
   containerMainGrid.innerHTML = mainGrid;
+  listenBoxesClick();
 };
 
-let boxes = document.querySelectorAll(".box");
+let boxes;
+
+function listenBoxesClick() {
+  boxes = document.querySelectorAll(".box");
+  boxes.forEach((e) => {
+    e.addEventListener("click", () => {
+      if (!isGameOver && e.innerHTML === "") {
+        e.innerHTML = turn;
+        cheakWin();
+        cheakDraw();
+        changeTurn();
+      }
+    });
+  });
+}
 
 let turn = "X";
 let isGameOver = false;
 
-boxes.forEach((e) => {
-  // e.innerHTML = ""
-  e.addEventListener("click", () => {
-    if (!isGameOver && e.innerHTML === "") {
-      e.innerHTML = turn;
-      cheakWin();
-      cheakDraw();
-      changeTurn();
-    }
-  });
-});
-
 function changeTurn() {
+  console.log("ENTRA");
   if (turn === "X") {
     turn = "O";
-    document.querySelector(".bg").computedStyleMap.left = "85px";
+    document.querySelector("#background").style.left = "85px";
   } else {
     turn = "X";
-    document.querySelector(".bg").computedStyleMap.left = "0";
+    document.querySelector("#background").style.left = "0";
   }
 }
 
@@ -67,7 +69,7 @@ function cheakWin() {
       document.querySelector("#results").innerHTML = turn + " win";
       document.querySelector("#play-again").style.display = "inline";
 
-      for (j = 0; j < 3; j++) {
+      for (let j = 0; j < 3; j++) {
         boxes[winConditions[i][j]].style.backgroundColor = "#08D9D6";
         boxes[winConditions[i][j]].style.color = "#000";
       }
@@ -90,7 +92,7 @@ function cheakDraw() {
   }
 }
 
-document.querySelector("#play-again").addEventListener("click", () => {
+export function restartGame() {
   isGameOver = false;
   turn = "X";
   document.querySelector(".bg").style.left = "0";
@@ -102,4 +104,4 @@ document.querySelector("#play-again").addEventListener("click", () => {
     e.style.removeProperty("background-color");
     e.style.color = "#fff";
   });
-});
+}

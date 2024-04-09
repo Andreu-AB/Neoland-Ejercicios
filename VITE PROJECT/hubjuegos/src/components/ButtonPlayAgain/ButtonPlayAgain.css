@@ -1,0 +1,14 @@
+#play-again {
+  background-color: #ff2e63;
+  padding: 10px 25px;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#play-again:hover {
+  padding: 10px 40px;
+  background-color: #08d9d6;
+  color: #000;
+}

@@ -16,6 +16,6 @@ const template = () => `
 export const PrintTicTacToePage = () => {
   document.querySelector("main").innerHTML = template();
   PrintPlayerTurn();
-  PrintButtonPlayAgain();
   PrintMainGrid();
+  PrintButtonPlayAgain();
 };

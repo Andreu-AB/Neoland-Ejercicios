@@ -16,14 +16,16 @@ const template = () => `
       <li>
         <figure id="navigateTicTacToe">
           <img
-            src="https://res.cloudinary.com/dq186ej4c/image/upload/v1689761641/pngwing.com_1_iq8zfk.png"
-            alt=" go to wacka topo game"
+          class="TicTacToeImage"
+            src="https://res.cloudinary.com/df10msx47/image/upload/v1712817279/TicTacToe_dk1ahf.webp"
+            alt=" go to Tic Tac Toe game"
           />
-          <h2>WACKA TOPO</h2>
+          <h2>TIC TAC TOE</h2>
         </figure>
       </li>
-      <li>
-        <figure>
+      <li class="MemoryGameLi">
+        <h2 class="comingSoonTitle">COMING SOON</h2>
+        <figure class="MemoryGameFigure">
           <img
             src="https://res.cloudinary.com/dq186ej4c/image/upload/v1689761735/6168776_kfna36.png"
             alt="go to memory game"

@@ -1,0 +1,11 @@
+#ticTacToeContainer {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  text-align: center;
+  padding-top: 5vh;
+}
+
+body {
+  background-color: var(--background-color);
+}

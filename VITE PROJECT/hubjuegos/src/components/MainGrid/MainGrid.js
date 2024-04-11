@@ -38,7 +38,6 @@ let turn = "X";
 let isGameOver = false;
 
 function changeTurn() {
-  console.log("ENTRA");
   if (turn === "X") {
     turn = "O";
     document.querySelector("#background").style.left = "85px";

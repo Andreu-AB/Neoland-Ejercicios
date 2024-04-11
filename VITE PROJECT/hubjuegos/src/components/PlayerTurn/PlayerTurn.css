@@ -1,21 +1,7 @@
-* {
-  color: white;
-  font-family: sans-serif;
-  transition: 0.2s ease-in-out;
-  user-select: none;
-}
 .align {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-body {
-  background-color: #252a34;
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  text-align: center;
-  padding-top: 5vh;
 }
 
 .turn-container {

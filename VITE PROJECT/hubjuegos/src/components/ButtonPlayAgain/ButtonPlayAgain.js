@@ -13,6 +13,8 @@ export const PrintButtonPlayAgain = () => {
   listenToButtonClick();
 };
 
+// Botón que ejecuta la función de reiniciar el juego que aparece en MainGrid.js
+
 function listenToButtonClick() {
   const buttonPlayAgainElement = document.querySelector("#play-again");
 

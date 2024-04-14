@@ -37,6 +37,8 @@ const template = () => `
   </div>
 `;
 
+// Muestrario de los elementos de la app con addEventListener de cada aplicación
+
 const addEventListeners = () => {
   const navigatePokemon = document.getElementById("navigatePokemon");
   navigatePokemon.addEventListener("click", () => {

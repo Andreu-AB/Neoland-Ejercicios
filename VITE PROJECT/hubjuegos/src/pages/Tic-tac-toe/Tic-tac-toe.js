@@ -13,6 +13,8 @@ const template = () => `
 
 `;
 
+// Importa y llama los componentes de la app del 3 en raya
+
 export const PrintTicTacToePage = () => {
   document.querySelector("main").innerHTML = template();
   PrintPlayerTurn();

@@ -37,6 +37,8 @@ function listenBoxesClick() {
 let turn = "X";
 let isGameOver = false;
 
+// Funciones del cambio de turno, comprobación de victoria, de empate y reinicio del juego
+
 function changeTurn() {
   if (turn === "X") {
     turn = "O";

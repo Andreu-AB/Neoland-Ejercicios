@@ -9,6 +9,8 @@ export const PrintPlayerTurn = () => {
       <div id="background" class="bg"></div>
     </div>
 `;
+
+  // Coge el archivo contenedor de TicTacToe.js e inyecta el template, pone el html y llama la función
   const containerPlayerTurn = document.getElementById("playerTurnContainer");
   containerPlayerTurn.innerHTML = playerTurn;
 };

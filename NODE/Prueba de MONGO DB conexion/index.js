@@ -1,53 +1,50 @@
-// const express = require("express");
-// const dotenv = require("dotenv");
-// const { connect } = require("./src/utils/db");
-
-// // creamos el servidor web
-// const app = express();
-
-// // vamos a configurar dotenv para poder utilizar las variables d entorno del .env
-// dotenv.config();
-
-// //! conectamos con la base de datos
-// connect();
-
-// //! -----------------VARIABLES CONSTANTES --> PORT
-
-// const PORT = process.env.PORT;
-
-// //! ------------------ limitaciones de cantidad en el back end
-// app.use(express.json({ limit: "5mb" }));
-// app.use(express.urlencoded({ limit: "5mb", extended: false }));
-
-// //! ------------------ ESCUCHAMOS EN EL PUERTO EL SERVIDOR WEB-----
-
-// app.listen(PORT, () =>
-//   console.log(`Server listening on port 👌🔍 http://localhost:${PORT}`)
-// );
-
 const express = require("express");
 const dotenv = require("dotenv");
-const cors = require("cors");
-dotenv.config();
-
-/// CREAR SEERVER WEB
+const { connect } = require("./src/utils/db");
+//! ----------------------------------------------------------
+//?------------------ creamos el servidor web------------------
+//! ----------------------------------------------------------
 const app = express();
 
-// TRAER DEL ENV LA VARIABLE DE ENTORNO DEL PORT
+// vamos a configurar dotenv para poder utilizar las variables d entorno del .env
+dotenv.config();
+//! ----------------------------------------------------------
+//? ------------conectamos con la base de datos---------------
+//! ----------------------------------------------------------
+connect();
+
+//! ----------------------------------------------------------
+//?- ------------------- configurar cloudinary ----------------
+//! ----------------------------------------------------------
+const { configCloudinary } = require("./src/middleware/files.middleware");
+configCloudinary();
+//! -----------------VARIABLES CONSTANTES --> PORT
 
 const PORT = process.env.PORT;
-console.log(PORT);
 
-// CORS --> CONFIGURAR EL QUE SE PUEDE HACER EN EL BACK ASI COMO EL ACCESO
+//! ----------------------------------------------------------
+//?- ------------------- CORS -------------------------------
+//! ----------------------------------------------------------
+const cors = require("cors");
+
 app.use(cors());
 
-//! ------------------ limitaciones de cantidad en el back end
+//! ----------------- ----------------------------------------
+//? -----------------ROUTAS ---------------------------------
+//! ----------------- ----------------------------------------
+const UserRoutes = require("./src/api/routes/User.routes");
+
+app.use("/api/v1/users/", UserRoutes);
+
+//! --------------------------------------------------------------
+//? ------------------ limitaciones de cantidad en el back end-----
+//! ---------------------------------------------------------------
 app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({ limit: "5mb", extended: false }));
 
-//! ------------------ ROUTAS DE LA APP -------------------------
-
-//! -----------------  ERRORES GENERALES Y RUTA NO ENCONTRADA
+//! ----------------------------------------------------------
+//? -----------------  ERRORES GENERALES Y RUTA NO ENCONTRADA
+//! ----------------------------------------------------------
 
 app.use("*", (req, res, next) => {
   const error = new Error("Route not found");
@@ -63,9 +60,9 @@ app.use((error, req, res) => {
     .json(error.message || "unexpected error");
 });
 
-//! ------------------ ESCUCHAMOS EN EL PUERTO EL SERVIDOR WEB-----
-
-// esto de aqui  nos revela con que tecnologia esta hecho nuestro back
+//! ------------------------------------------------------------------
+//? ------------------ ESCUCHAMOS EN EL PUERTO EL SERVIDOR WEB--------
+//! ------------------------------------------------------------------
 app.disable("x-powered-by");
 app.listen(PORT, () =>
   console.log(`Server listening on port 👌🔍 http://localhost:${PORT}`)

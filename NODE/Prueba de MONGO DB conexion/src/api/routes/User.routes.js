@@ -13,6 +13,12 @@ const {
   changePassword,
   sendPassword,
   modifyPassword,
+  update,
+  deleteUser,
+  getAll,
+  byId,
+  byName,
+  byGender,
 } = require("../controllers/Users.controllers");
 const { upload } = require("../../middleware/files.middleware");
 const { isAuth, isAuthAdmin } = require("../../middleware/auth.middleware");
@@ -29,6 +35,12 @@ UserRoutes.post("/login", login);
 UserRoutes.post("/login/autologin", autoLogin);
 UserRoutes.patch("/forgotpassword", changePassword);
 UserRoutes.patch("/changepassword", [isAuth], modifyPassword);
+UserRoutes.patch("/update/update", [isAuth], upload.single("image"), update);
+UserRoutes.delete("/", [isAuth], deleteUser);
+UserRoutes.get("/", getAll);
+UserRoutes.get("/finById/:id", byId);
+UserRoutes.get("/finByName/:name", byName);
+UserRoutes.get("/finByGender/:gender/:name", byGender);
 
 //!------------------------------------------------------------------------
 //?--------------------------------RUTAS CON REDIRECT----------------------
